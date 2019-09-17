@@ -18,4 +18,6 @@ EOF
     git config --global user.name "Add & Commit GitHub Action"
 }
 
-echo "${GITHUB_REF:11}"
+echo "${GITHUB_REF}"
+
+exit 1
