@@ -1,0 +1,15 @@
+name: Add latest tag to new release
+on:
+  release:
+    types: [published]
+
+jobs: 
+  run:
+    name: Run local action
+    runs-on: ubuntu-latest
+    steps: 
+    - uses: actions/checkout@master
+
+    - uses: '.'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
