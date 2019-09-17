@@ -10,6 +10,6 @@ jobs:
     steps: 
     - uses: actions/checkout@master
 
-    - uses: "."
+    - uses: ./.
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
