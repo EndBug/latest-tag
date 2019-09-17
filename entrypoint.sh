@@ -18,6 +18,6 @@ EOF
     git config --global user.name "Add & Commit GitHub Action"
 }
 
-echo "${GITHUB_REF}"
+echo "${GITHUB_SHA}"
 
 exit 1
