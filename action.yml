@@ -1,0 +1,10 @@
+name: 'Latest tag'
+description: Automatically generate & update a 'latest' tag for your releases
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
+branding: 
+  icon: tag
+  color: blue
