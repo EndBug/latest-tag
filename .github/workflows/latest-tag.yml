@@ -8,8 +8,10 @@ jobs:
     name: Run local action
     runs-on: ubuntu-latest
     steps: 
-    - uses: actions/checkout@master
+    - name: Checkout repository
+      uses: actions/checkout@master
 
-    - uses: ./.
+    - name: Run latest-tag
+      uses: ./.
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
