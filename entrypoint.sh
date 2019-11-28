@@ -22,7 +22,7 @@ echo "Setting up git machine..."
 git_setup
 
 echo "Forcing tag update..."
-git tag -a latest -m "$INPUT_INTRODUCTION" "${GITHUB_SHA}" -f
+git tag -a latest -m "$INPUT_DESCRIPTION" "${GITHUB_SHA}" -f
 
 echo "Forcing tag push..."
 git push --tags -f
