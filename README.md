@@ -11,7 +11,7 @@ That's why I made this action: if you're the kind of guy that doesn't like to up
 
 These are the parameters you can use with the action:
 
-- `description`: [optional] Description for the release
+- `description`: [optional] Description for the tag
 
 ## Usage
 
@@ -35,7 +35,7 @@ jobs:
     - name: Run latest-tag
       uses: EndBug/latest-tag@latest
       with:
-        description: Description for the release
+        description: Description for the tag
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
 ```
