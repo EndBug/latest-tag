@@ -35,7 +35,7 @@ jobs:
     - name: Run latest-tag
       uses: EndBug/latest-tag@latest
       with:
-        description: tag of description
+        introduction: tag of description
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
 ```
