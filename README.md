@@ -11,7 +11,7 @@ That's why I made this action: if you're the kind of guy that doesn't like to up
 
 You must provide:
 
-- `description`: (Optional) Optional tag of description
+- `introduction`: (Optional) tag of description
 
 ## Usage
 
