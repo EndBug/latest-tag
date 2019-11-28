@@ -7,11 +7,11 @@ If you want to use the **latest** release of an action you can only hope authors
 
 That's why I made this action: if you're the kind of guy that doesn't like to update tags you can simply use this action and forget about it. You can just put `latest` in the documentation: your users will get the benefits of using a branch as ref and the security of using only stable versions.
 
-## Input variables
+## Input parameters
 
-You must provide:
+These are the parameters you can use with the action:
 
-- `introduction`: (Optional) tag of description
+- `description`: [optional] Description for the release
 
 ## Usage
 
@@ -35,7 +35,7 @@ jobs:
     - name: Run latest-tag
       uses: EndBug/latest-tag@latest
       with:
-        introduction: tag of description
+        description: Description for the release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
 ```
