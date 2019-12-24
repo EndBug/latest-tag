@@ -48,3 +48,7 @@ With that said, you can just copy the example line and don't worry about it. If 
 ## License
 
 This action is distributed under the MIT license, check the [license](LICENSE) for more info.
+
+## Similar actions
+
+[actions-tagger](https://github.com/marketplace/actions/actions-tagger): allows you to create and update both `latest` and major version tags
