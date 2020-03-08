@@ -49,7 +49,7 @@ async function run() {
         info(`Creating 'latest' tag for release commit: ${GITHUB_SHA}`)
         newRef = await git.createRef({
           ...context.repo,
-          ref: 'tags/latest',
+          ref: 'refs/tags/latest',
           sha: GITHUB_SHA
         })
       }
