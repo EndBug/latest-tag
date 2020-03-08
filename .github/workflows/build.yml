@@ -18,5 +18,6 @@ jobs:
         with:
           add: lib
           force: true
+          message: "[auto] Update build"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
