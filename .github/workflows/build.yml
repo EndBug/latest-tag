@@ -1,0 +1,22 @@
+name: Build action
+on:
+  push:
+    paths:
+      - src/**
+      - ./*.json
+      - .github/workflow/build.yml
+
+jobs:
+  build:
+    name: Build with @zeit/ncc
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm run build
+      - uses: EndBug/add-and-commit@v4
+        with:
+          add: lib
+          force: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
