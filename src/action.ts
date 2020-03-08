@@ -1,11 +1,9 @@
 import { setFailed, getInput, info } from '@actions/core'
 import { context, GitHub } from '@actions/github'
-import valid from 'semver/functions/valid'
 
 function isRelease() {
-  console.log(context.payload)
   return context.payload.action == 'published'
-    && valid(context.payload.release?.tag_name) != null
+    && context.payload.release?.tag_name != null
 }
 
 async function run() {
