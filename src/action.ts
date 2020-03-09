@@ -55,11 +55,11 @@ async function run() {
           sha: GITHUB_SHA
         })
       } else {
-        if (tagResult?.status == 201) {
+        if (tagResult?.status == 201 && macthingRef) {
           info('Deleting previous ref...')
           await git.deleteRef({
             ...context.repo,
-            ref: 'refs/tags/latest'
+            ref: 'tags/latest'
           })
         }
         info(`Creating 'latest' tag for release commit: ${GITHUB_SHA}`)
