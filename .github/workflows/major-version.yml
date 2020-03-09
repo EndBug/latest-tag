@@ -1,4 +1,4 @@
-# This workflow uses the Actions Tagger action, which is a viable alternative to Latest Tag. 
+# This workflow uses the Actions Tagger action, which is a viable alternative to Latest Tag.
 # If you want to see an example on how to use Latest Tag, please check out the latest-tag.yml file in this directory.
 
 name: Keep the major versions up-to-date
@@ -9,8 +9,8 @@ on:
 
 jobs:
   actions-tagger:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
-      - uses: Actions-R-Us/actions-tagger@latest
+      - uses: Actions-R-Us/actions-tagger@v1
         env:
           GITHUB_TOKEN: "${{secrets.GITHUB_TOKEN}}"
