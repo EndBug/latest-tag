@@ -1,4 +1,4 @@
-import { setFailed, getInput, info, error } from '@actions/core'
+import { setFailed, getInput, info } from '@actions/core'
 import { context } from '@actions/github'
 import * as util from 'util'
 import * as child_process from 'child_process'
@@ -7,7 +7,7 @@ const { GITHUB_ACTOR, GITHUB_TOKEN } = process.env
 
 async function exec(command: string) {
   const { stdout, stderr } = await util.promisify(child_process.exec)(command)
-  error(stderr)
+  console.error(stderr)
   return stdout
 }
 
@@ -44,7 +44,7 @@ async function run() {
       if (message) await annotatedTag(message)
       else await lightweightTag()
 
-      info('Pusing updated tag to repo...')
+      info('Pushing updated tag to repo...')
       return await exec('git push --force --tags')
     } else setFailed('Missing `GITHUB_TOKEN` environment variable')
   } catch (error) {
