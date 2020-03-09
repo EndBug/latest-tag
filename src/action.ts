@@ -39,14 +39,14 @@ async function run() {
           }
         })
 
-        if (tagResult.status != 200) {
+        if (tagResult.status != 201) {
           warning('Creating tag obj resulted in an error:\n' + JSON.stringify(tagResult.data))
-          warning('The action will proceed in creating a lightweight tag.')
+          warning('The action will proceed in creating/updating a lightweight tag.')
         }
       }
 
       let newRef
-      if (macthingRef && tagResult?.status != 200) {
+      if (macthingRef && tagResult?.status != 201) {
         info(`Updating 'latest' tag to release commit: ${GITHUB_SHA}`)
         newRef = await git.updateRef({
           ...context.repo,
