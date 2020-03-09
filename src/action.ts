@@ -32,7 +32,7 @@ async function createTag(git: git, message: string) {
     tagger: {
       name: GITHUB_ACTOR,
       email: `${GITHUB_ACTOR}@users.noreply.github.com`,
-      date: (new Date()).toString()
+      date: (new Date()).toISOString()
     }
   })
   info('Tag created: ' + str(tag.data))
