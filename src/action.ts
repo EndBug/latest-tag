@@ -1,4 +1,4 @@
-import { setFailed, getInput, info } from '@actions/core'
+import { setFailed, getInput, info, warning } from '@actions/core'
 import { context, GitHub } from '@actions/github'
 
 function isRelease() {
@@ -24,20 +24,29 @@ async function run() {
       })).data.find(obj => obj.ref.endsWith('latest'))
 
       const message = getInput('description')
-      if (message) await git.createTag({
-        ...context.repo,
-        tag: 'latest',
-        message,
-        object: GITHUB_SHA,
-        type: 'commit',
-        tagger: {
-          name: GITHUB_ACTOR,
-          email: `${GITHUB_ACTOR}@users.noreply.github.com`
+
+      let tagResult
+      if (message) {
+        tagResult = await git.createTag({
+          ...context.repo,
+          tag: 'latest',
+          message,
+          object: GITHUB_SHA,
+          type: 'commit',
+          tagger: {
+            name: GITHUB_ACTOR,
+            email: `${GITHUB_ACTOR}@users.noreply.github.com`
+          }
+        })
+
+        if (tagResult.status != 200) {
+          warning('Creating tag obj resulted in an error:\n' + JSON.stringify(tagResult.data))
+          warning('The action will proceed in creating a lightweight tag.')
         }
-      })
+      }
 
       let newRef
-      if (macthingRef) {
+      if (macthingRef && tagResult?.status != 200) {
         info(`Updating 'latest' tag to release commit: ${GITHUB_SHA}`)
         newRef = await git.updateRef({
           ...context.repo,
