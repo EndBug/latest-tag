@@ -3,7 +3,8 @@ on:
   push:
     paths:
       - src/**
-      - ./*.json
+      - package.json
+      - package-lock.json
       - .github/workflow/build.yml
 
 jobs:
