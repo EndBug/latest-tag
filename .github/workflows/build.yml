@@ -5,7 +5,7 @@ on:
       - src/**
       - package.json
       - package-lock.json
-      - .github/workflow/build.yml
+      - .github/workflows/build.yml
 
 jobs:
   build:
