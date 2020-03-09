@@ -42,7 +42,7 @@ async function run() {
         if (tagResult.status != 201) {
           warning('Creating tag obj resulted in an error:\n' + JSON.stringify(tagResult.data))
           warning('The action will proceed in creating/updating a lightweight tag.')
-        }
+        } else info('Tag object successfully created.')
       }
 
       let newRef
@@ -55,6 +55,13 @@ async function run() {
           sha: GITHUB_SHA
         })
       } else {
+        if (tagResult?.status == 201) {
+          info('Deleting previous ref...')
+          await git.deleteRef({
+            ...context.repo,
+            ref: 'refs/tags/latest'
+          })
+        }
         info(`Creating 'latest' tag for release commit: ${GITHUB_SHA}`)
         newRef = await git.createRef({
           ...context.repo,
