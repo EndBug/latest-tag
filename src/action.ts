@@ -1,79 +1,29 @@
-import { setFailed, getInput, info, warning } from '@actions/core'
-import { context, GitHub } from '@actions/github'
-const { stringify: str } = JSON
+import { setFailed, getInput, info } from '@actions/core'
+import { context } from '@actions/github'
+import * as util from 'util'
+import * as child_process from 'child_process'
 
-const { GITHUB_ACTOR, GITHUB_SHA, GITHUB_TOKEN } = process.env
-type git = GitHub['git']
+const { GITHUB_ACTOR, GITHUB_TOKEN } = process.env
+
+async function exec(command: string) {
+  const { stdout, stderr } = await util.promisify(child_process.exec)(command)
+  console.error('stderr:', stderr)
+  return stdout
+}
 
 function isRelease() {
   return context.payload.action == 'published'
     && context.payload.release?.tag_name != null
 }
 
-async function createRef(git: git) {
-  info(`Creating ref to point to ${GITHUB_SHA}...`)
-  let created = await git.createRef({
-    ...context.repo,
-    ref: 'refs/tags/latest',
-    sha: GITHUB_SHA
-  })
-  info('Ref created: ' + str(created.data))
-  return created
+function annotatedTag(message: string) {
+  info('Creating annotated tag...')
+  return exec(`git tag -a -f -m "${message}" latest`)
 }
 
-async function createTag(git: git, message: string) {
-  info(`Creating tag object for ${GITHUB_SHA}...`)
-  let tag = await git.createTag({
-    ...context.repo,
-    tag: 'latest',
-    message,
-    object: GITHUB_SHA,
-    type: 'commit',
-    tagger: {
-      name: GITHUB_ACTOR,
-      email: `${GITHUB_ACTOR}@users.noreply.github.com`,
-      date: (new Date()).toISOString()
-    }
-  })
-  info('Tag created: ' + str(tag.data))
-  return tag
-}
-
-async function deleteRef(git: git) {
-  info('Deleting ref...')
-  let deleted = await git.deleteRef({
-    ...context.repo,
-    ref: 'tags/latest'
-  })
-  info('Ref deleted')
-  return deleted
-}
-
-async function updateRef(git: git) {
-  info(`Updating ref to point to ${GITHUB_SHA}...`)
-  let updated = await git.updateRef({
-    ...context.repo,
-    force: true,
-    ref: 'tags/latest',
-    sha: GITHUB_SHA
-  })
-  info('Ref updated: ' + str(updated.data))
-  return updated
-}
-
-async function annotatedTag(git: git, message: string, matching: boolean) {
-  if (matching) await deleteRef(git)
-  let tag = await createTag(git, message)
-  if (tag.status != 201) {
-    warning('Creating tag obj resulted in an error:\n' + str(tag.data))
-    warning('The action will proceed in creating/updating a lightweight tag.')
-  }
-  return await createRef(git)
-}
-
-function lightweightTag(git: git, matching: boolean) {
-  if (matching) return updateRef(git)
-  else return createRef(git)
+function lightweightTag() {
+  info('Creating lightweight tag...')
+  return exec(`git tag -f latest`)
 }
 
 async function run() {
@@ -85,17 +35,17 @@ async function run() {
     }
 
     if (GITHUB_TOKEN) {
-      const { git } = new GitHub(GITHUB_TOKEN)
-
-      const macthingRef = (await git.listMatchingRefs({
-        ...context.repo,
-        ref: `tags/latest`
-      })).data.find(obj => obj.ref.endsWith('latest'))
+      info('Setting up git user...')
+      await exec(`git config user.name "${GITHUB_ACTOR}"`)
+      await exec(`git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"`)
 
       const message = getInput('description')
 
-      if (message) annotatedTag(git, message, !!macthingRef)
-      else lightweightTag(git, !!macthingRef)
+      if (message) await annotatedTag(message)
+      else await lightweightTag()
+
+      info('Pusing updated tag to repo...')
+      return await exec('git push -ft')
     } else setFailed('Missing `GITHUB_TOKEN` environment variable')
   } catch (error) {
     setFailed(error instanceof Error ? error.message : error)
