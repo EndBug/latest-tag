@@ -41,6 +41,7 @@ async function run() {
 
       const message = getInput('description')
       const tagName = getInput('tag-name') || "latest"
+      info(`Using '${tagName}' as tag name.`)
 
       if (message) await annotatedTag(message, tagName)
       else await lightweightTag(tagName)
