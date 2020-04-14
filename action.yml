@@ -13,3 +13,6 @@ inputs:
   description:
     description: "Tag description"
     required: false
+  tag-name:
+    description: "Tag name"
+    required: false

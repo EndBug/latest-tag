@@ -16,14 +16,14 @@ function isRelease() {
     && context.payload.release?.tag_name != null
 }
 
-function annotatedTag(message: string) {
+function annotatedTag(message: string, tagName: string) {
   info('Creating annotated tag...')
-  return exec(`git tag -a -f -m "${message}" latest`)
+  return exec(`git tag -a -f -m "${message}" ${tagName}`)
 }
 
-function lightweightTag() {
+function lightweightTag(tagName: string) {
   info('Creating lightweight tag...')
-  return exec(`git tag -f latest`)
+  return exec(`git tag -f ${tagName}`)
 }
 
 async function run() {
@@ -40,9 +40,10 @@ async function run() {
       await exec(`git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"`)
 
       const message = getInput('description')
+      const tagName = getInput('tag-name') || "latest"
 
-      if (message) await annotatedTag(message)
-      else await lightweightTag()
+      if (message) await annotatedTag(message, tagName)
+      else await lightweightTag(tagName)
 
       info('Pushing updated tag to repo...')
       return await exec('git push --force --tags')
