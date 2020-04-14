@@ -13,3 +13,6 @@ inputs:
   description:
     description: "Tag description"
     required: false
+  latestTagName:
+    description: "Tag name for the latest tag"
+    required: false
