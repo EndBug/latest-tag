@@ -11,8 +11,8 @@ That's why I made this action: if you're the kind of guy that doesn't like to up
 
 These are the parameters you can use with the action:
 
-- `tag-name`: [optional] Tag name. Specify the name of tag that will be created or updated. If no value is entered, tag with name `latest` will be created or updated.
-- `description`: [optional] Tag description. Providing a value will result in the creation of an **annotated tag**; if no value is enterd, the action will create a **lightweight tag**.
+- `tag-name`: [optional] Tag name. Specify the name of tag that will be created or updated (default is `latest`).
+- `description`: [optional] Tag description. Providing a value will result in the creation of an **annotated tag**; if no value is entered, the action will create a **lightweight tag**.
 
 ## Usage
 
