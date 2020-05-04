@@ -47,7 +47,7 @@ async function run() {
       else await lightweightTag(tagName)
 
       info('Pushing updated tag to repo...')
-      return await exec('git push --force --tags')
+      return await exec(`git push --force origin ${tagName}`)
     } else setFailed('Missing `GITHUB_TOKEN` environment variable')
   } catch (error) {
     setFailed(error instanceof Error ? error.message : error)
