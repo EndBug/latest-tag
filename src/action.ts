@@ -7,7 +7,7 @@ const { GITHUB_ACTOR, GITHUB_TOKEN } = process.env
 
 async function exec(command: string) {
   const { stdout, stderr } = await util.promisify(child_process.exec)(command)
-  console.error(stderr)
+  if (stderr) console.error(stderr)
   return stdout
 }
 
