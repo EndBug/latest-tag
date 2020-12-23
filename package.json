@@ -4,7 +4,7 @@
   "description": "Automatically generate & update a 'latest' tag for your releases",
   "main": "lib/index.js",
   "scripts": {
-    "build": "npm i && ncc build src/action.ts --minify --out lib",
+    "build": "ncc build src/action.ts --minify --out lib",
     "lint": "eslint --ext .ts src",
     "lint:fix": "eslint --ext .ts src --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
