@@ -12,8 +12,10 @@ async function exec(command: string) {
 }
 
 function isRelease() {
-  return context.payload.action == 'published'
-    && context.payload.release?.tag_name != null
+  return (
+    context.payload.action == 'published' &&
+    context.payload.release?.tag_name != null
+  )
 }
 
 function annotatedTag(message: string, tagName: string) {
@@ -29,18 +31,22 @@ function lightweightTag(tagName: string) {
 async function run() {
   try {
     if (!isRelease()) {
-      setFailed("This action should only be used in a release context")
-      setFailed("If you believe this to be an error, please submit a bug report")
+      setFailed('This action should only be used in a release context')
+      setFailed(
+        'If you believe this to be an error, please submit a bug report'
+      )
       return
     }
 
     if (GITHUB_TOKEN) {
       info('Setting up git user...')
       await exec(`git config user.name "${GITHUB_ACTOR}"`)
-      await exec(`git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"`)
+      await exec(
+        `git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"`
+      )
 
       const message = getInput('description')
-      const tagName = getInput('tag-name') || "latest"
+      const tagName = getInput('tag-name') || 'latest'
       info(`Using '${tagName}' as tag name.`)
 
       if (message) await annotatedTag(message, tagName)

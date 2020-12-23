@@ -5,6 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "npm i && ncc build src/action.ts --minify --out lib",
+    "lint": "eslint --ext .ts src",
+    "lint:fix": "eslint --ext .ts src --fix",
     "watch": "ncc build src/action.ts --watch --minify --out lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,7 +26,13 @@
   },
   "devDependencies": {
     "@types/node": "^13.9.0",
+    "@typescript-eslint/eslint-plugin": "^4.11.0",
+    "@typescript-eslint/parser": "^4.11.0",
     "@zeit/ncc": "^0.21.1",
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.0",
+    "prettier": "^2.2.1",
     "typescript": "^3.8.3"
   }
 }

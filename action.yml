@@ -1,18 +1,22 @@
-name: "Latest tag"
+name: 'Latest tag'
 description: Automatically generate & update a 'latest' tag for your releases
 
+inputs:
+  description:
+    description: 'Tag description'
+    required: false
+  tag-name:
+    description: 'Tag name'
+    required: false
+  token:
+    description: 'GITHUB_TOKEN or a `repo` scoped Personal Access Token (PAT)'
+    required: false
+    default: ${{ github.token }}
+
 runs:
-  using: "node12"
-  main: "lib/index.js"
+  using: 'node12'
+  main: 'lib/index.js'
 
 branding:
   icon: tag
   color: blue
-
-inputs:
-  description:
-    description: "Tag description"
-    required: false
-  tag-name:
-    description: "Tag name"
-    required: false
