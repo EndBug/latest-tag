@@ -1,7 +1,6 @@
 # Latest tag
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
+
+[![All Contributors](https://img.shields.io/github/all-contributors/EndBug/latest-tag)](#contributors-)
 
 Automatically creates & updates a `latest` tag pointing to your latest release.
 
@@ -27,22 +26,22 @@ on:
   release:
     types: [published] # This makes it run only when a new released is published
 
-jobs: 
+jobs:
   run:
     name: Add/update tag to new release
     runs-on: ubuntu-latest
 
-    steps: 
-    - name: Checkout repository
-      uses: actions/checkout@master
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@master
 
-    - name: Run latest-tag
-      uses: EndBug/latest-tag@latest
-      with:
-        description: Description for the tag
-        tag-name: latest
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
+      - name: Run latest-tag
+        uses: EndBug/latest-tag@latest
+        with:
+          description: Description for the tag
+          tag-name: latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
 ```
 
 ### Environment variables:
