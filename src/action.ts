@@ -1,5 +1,4 @@
 import { setFailed, getInput, info } from '@actions/core'
-import { context } from '@actions/github'
 import * as util from 'util'
 import * as child_process from 'child_process'
 
@@ -9,13 +8,6 @@ async function exec(command: string) {
   const { stdout, stderr } = await util.promisify(child_process.exec)(command)
   if (stderr) console.error(stderr)
   return stdout
-}
-
-function isRelease() {
-  return (
-    context.payload.action == 'published' &&
-    context.payload.release?.tag_name != null
-  )
 }
 
 function annotatedTag(message: string, tagName: string) {
@@ -30,14 +22,6 @@ function lightweightTag(tagName: string) {
 
 async function run() {
   try {
-    if (!isRelease()) {
-      setFailed('This action should only be used in a release context')
-      setFailed(
-        'If you believe this to be an error, please submit a bug report'
-      )
-      return
-    }
-
     info('Setting up git user...')
     await exec(`git config user.name "${GITHUB_ACTOR}"`)
     await exec(
