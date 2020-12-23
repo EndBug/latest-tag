@@ -8,10 +8,6 @@ inputs:
   tag-name:
     description: 'Tag name'
     required: false
-  token:
-    description: 'GITHUB_TOKEN or a `repo` scoped Personal Access Token (PAT)'
-    required: false
-    default: ${{ github.token }}
 
 runs:
   using: 'node12'

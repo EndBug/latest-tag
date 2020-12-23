@@ -3,7 +3,7 @@ import { context } from '@actions/github'
 import * as util from 'util'
 import * as child_process from 'child_process'
 
-const { GITHUB_ACTOR, GITHUB_TOKEN } = process.env
+const { GITHUB_ACTOR } = process.env
 
 async function exec(command: string) {
   const { stdout, stderr } = await util.promisify(child_process.exec)(command)
@@ -38,23 +38,21 @@ async function run() {
       return
     }
 
-    if (GITHUB_TOKEN) {
-      info('Setting up git user...')
-      await exec(`git config user.name "${GITHUB_ACTOR}"`)
-      await exec(
-        `git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"`
-      )
+    info('Setting up git user...')
+    await exec(`git config user.name "${GITHUB_ACTOR}"`)
+    await exec(
+      `git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"`
+    )
 
-      const message = getInput('description')
-      const tagName = getInput('tag-name') || 'latest'
-      info(`Using '${tagName}' as tag name.`)
+    const message = getInput('description')
+    const tagName = getInput('tag-name') || 'latest'
+    info(`Using '${tagName}' as tag name.`)
 
-      if (message) await annotatedTag(message, tagName)
-      else await lightweightTag(tagName)
+    if (message) await annotatedTag(message, tagName)
+    else await lightweightTag(tagName)
 
-      info('Pushing updated tag to repo...')
-      return await exec(`git push --force origin ${tagName}`)
-    } else setFailed('Missing `GITHUB_TOKEN` environment variable')
+    info('Pushing updated tag to repo...')
+    return await exec(`git push --force origin ${tagName}`)
   } catch (error) {
     setFailed(error instanceof Error ? error.message : error)
   }
