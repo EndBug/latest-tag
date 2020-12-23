@@ -29,7 +29,7 @@ async function run() {
     )
 
     const message = getInput('description')
-    const tagName = getInput('tag-name') || 'latest'
+    const tagName = getInput('tag-name')
     info(`Using '${tagName}' as tag name.`)
 
     if (message) await annotatedTag(message, tagName)

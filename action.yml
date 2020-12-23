@@ -8,6 +8,7 @@ inputs:
   tag-name:
     description: 'Tag name'
     required: false
+    default: latest
 
 runs:
   using: 'node12'
