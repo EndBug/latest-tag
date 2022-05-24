@@ -5,10 +5,15 @@ inputs:
   description:
     description: 'Tag description'
     required: false
+  ref: 
+    description: 'Name of the tag or branch to update'
+    required: false # Usually true
+    # default: latest # Set in runtime while the old input is deprecated
   tag-name:
+    deprecationMessage: Use the `ref` input instead
     description: 'Tag name'
     required: false
-    default: latest
+    # default: latest
   force-branch:
     description: 'Force-update a branch rather than a tag'
     required: false
