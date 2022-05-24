@@ -47,14 +47,15 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/EndBug"><img src="https://avatars1.githubusercontent.com/u/26386270?v=4" width="100px;" alt=""/><br /><sub><b>Federico Grandi</b></sub></a><br /><a href="https://github.com/EndBug/latest-tag/commits?author=EndBug" title="Code">💻</a> <a href="https://github.com/EndBug/latest-tag/commits?author=EndBug" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/kslr"><img src="https://avatars3.githubusercontent.com/u/5516323?v=4" width="100px;" alt=""/><br /><sub><b>Kslr</b></sub></a><br /><a href="https://github.com/EndBug/latest-tag/commits?author=kslr" title="Code">💻</a></td>
-    <td align="center"><a href="http://lukas.dolezalu.cz/"><img src="https://avatars0.githubusercontent.com/u/132277?v=4" width="100px;" alt=""/><br /><sub><b>Lukáš Doležal</b></sub></a><br /><a href="https://github.com/EndBug/latest-tag/commits?author=DocX" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/ziyangczi"><img src="https://avatars0.githubusercontent.com/u/41968256?v=4" width="100px;" alt=""/><br /><sub><b>ziyangczi</b></sub></a><br /><a href="#ideas-ziyangczi" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/EndBug"><img src="https://avatars1.githubusercontent.com/u/26386270?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Federico Grandi</b></sub></a><br /><a href="https://github.com/EndBug/latest-tag/commits?author=EndBug" title="Code">💻</a> <a href="https://github.com/EndBug/latest-tag/commits?author=EndBug" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/kslr"><img src="https://avatars3.githubusercontent.com/u/5516323?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kslr</b></sub></a><br /><a href="https://github.com/EndBug/latest-tag/commits?author=kslr" title="Code">💻</a></td>
+    <td align="center"><a href="http://lukas.dolezalu.cz/"><img src="https://avatars0.githubusercontent.com/u/132277?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lukáš Doležal</b></sub></a><br /><a href="https://github.com/EndBug/latest-tag/commits?author=DocX" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/ziyangczi"><img src="https://avatars0.githubusercontent.com/u/41968256?v=4?s=100" width="100px;" alt=""/><br /><sub><b>ziyangczi</b></sub></a><br /><a href="#ideas-ziyangczi" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://floppy.org.uk"><img src="https://avatars.githubusercontent.com/u/3565?v=4?s=100" width="100px;" alt=""/><br /><sub><b>James Smith</b></sub></a><br /><a href="#ideas-Floppy" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/EndBug/latest-tag/commits?author=Floppy" title="Code">💻</a></td>
   </tr>
 </table>
 
-<!-- markdownlint-enable -->
+<!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
