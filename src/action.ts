@@ -10,19 +10,19 @@ async function exec(command: string) {
   return stdout
 }
 
-function annotatedTag(message: string, tagName: string) {
+function annotatedTag(message: string, ref: string) {
   core.info('Creating annotated tag...')
-  return exec(`git tag -a -f -m "${message}" ${tagName}`)
+  return exec(`git tag -a -f -m "${message}" ${ref}`)
 }
 
-function lightweightTag(tagName: string) {
+function lightweightTag(ref: string) {
   core.info('Creating lightweight tag...')
-  return exec(`git tag -f ${tagName}`)
+  return exec(`git tag -f ${ref}`)
 }
 
-function forceBranch(tagName: string) {
+function forceBranch(ref: string) {
   core.info('Updating branch...')
-  return exec(`git branch -f ${tagName}`)
+  return exec(`git branch -f ${ref}`)
 }
 
 async function run() {
@@ -34,8 +34,8 @@ async function run() {
     )
 
     const message = core.getInput('description')
-    const tagName = core.getInput('tag-name', { required: true })
-    core.info(`Using '${tagName}' as tag name.`)
+    const ref = core.getInput('ref') ?? core.getInput('tag-name') ?? 'latest'
+    core.info(`Using '${ref}' as tag name.`)
 
     const branch = core.getBooleanInput('force-branch', { required: true })
 
@@ -44,13 +44,13 @@ async function run() {
         "You can't set a message when updating a branch, the message will be ignored."
       )
 
-    if (branch) await forceBranch(tagName)
-    else if (message) await annotatedTag(message, tagName)
-    else await lightweightTag(tagName)
+    if (branch) await forceBranch(ref)
+    else if (message) await annotatedTag(message, ref)
+    else await lightweightTag(ref)
 
     if (branch) core.info('Force-pushing updated branch to repo...')
     else core.info('Pushing updated tag to repo...')
-    return await exec(`git push --force origin ${tagName}`)
+    return await exec(`git push --force origin ${ref}`)
   } catch (error) {
     core.setFailed(error instanceof Error ? error.message : error)
   }
