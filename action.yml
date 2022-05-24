@@ -9,6 +9,10 @@ inputs:
     description: 'Tag name'
     required: false
     default: latest
+  force-branch:
+    description: 'Force-update a branch rather than a tag'
+    required: false
+    default: 'false'
 
 runs:
   using: 'node12'
