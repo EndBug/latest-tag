@@ -7,7 +7,7 @@ inputs:
     required: false
   ref: 
     description: 'Name of the tag or branch to update'
-    required: false
+    required: false # Usually true
     # default: latest # Set in runtime while the old input is deprecated
   tag-name:
     deprecationMessage: Use the `ref` input instead

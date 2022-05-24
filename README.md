@@ -17,15 +17,14 @@ Add a step like this to your workflow:
 - name: Run latest-tag
   uses: EndBug/latest-tag@latest
   with:
-    # You can change the name of the tag with this input.
-    # Default: 'latest'
-    tag-name: someCustomTagName
+    # You can change the name of the tag or branch with this input.
+    ref: someCustomTagName
 
     # If a description is provided, the action will use it to create an annotated tag. If none is given, the action will create a lightweight tag.
-    # Optional
+    # Default: ''
     description: Description for the tag
 
-    # Force-update a branch instead of using a tag
+    # Force-update a branch instead of using a tag.
     # Default: false
     force-branch: true
 ```
@@ -56,6 +55,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
