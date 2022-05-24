@@ -20,6 +20,11 @@ function lightweightTag(tagName: string) {
   return exec(`git tag -f ${tagName}`)
 }
 
+function forceBranch(tagName: string) {
+  info('Updating branch...')
+  return exec(`git branch -f ${tagName}`)
+}
+
 async function run() {
   try {
     info('Setting up git user...')
@@ -32,10 +37,14 @@ async function run() {
     const tagName = getInput('tag-name')
     info(`Using '${tagName}' as tag name.`)
 
+    const branch = getInput('force-branch') === 'true'
+
     if (message) await annotatedTag(message, tagName)
+    else if (branch) await forceBranch(tagName)
     else await lightweightTag(tagName)
 
-    info('Pushing updated tag to repo...')
+    if (branch) info('Force-pushing updated branch to repo...')
+    else info('Pushing updated tag to repo...')
     return await exec(`git push --force origin ${tagName}`)
   } catch (error) {
     setFailed(error instanceof Error ? error.message : error)

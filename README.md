@@ -4,7 +4,7 @@
 
 Automatically creates & updates a `latest` tag pointing to your latest release.
 
-When using GitHub Actions you always have to put a reference for every action you use in your worflows: that means that you either need to choose a specific version or you need to use a branch.  
+When using GitHub Actions you always have to put a reference for every action you use in your worflows: that means that you either need to choose a specific version or you need to use a branch.
 If you want to use the **latest** release of an action you can only hope authors are mantaining a `latest` tag that they update with every version: although not impossible, it's not that easy to find someone willing to do that.
 
 That's why I made this action: if you're the kind of guy that doesn't like to update tags you can simply use this action and forget about it. You can just put `latest` in the documentation: your users will get the benefits of using a branch as ref and the security of using only stable versions (as long as you don't make breaking changes).
@@ -24,6 +24,10 @@ Add a step like this to your workflow:
     # If a description is provided, the action will use it to create an annotated tag. If none is given, the action will create a lightweight tag.
     # Optional
     description: Description for the tag
+
+    # Force-update a branch instead of using a tag
+    # Default: false
+    force-branch: true
 ```
 
 ## License
