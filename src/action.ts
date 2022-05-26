@@ -34,7 +34,7 @@ async function run() {
     )
 
     const message = core.getInput('description')
-    const ref = core.getInput('ref') ?? core.getInput('tag-name') ?? 'latest'
+    const ref = core.getInput('ref') || core.getInput('tag-name') || 'latest'
     core.info(`Using '${ref}' as tag name.`)
 
     const branch = core.getBooleanInput('force-branch', { required: true })
