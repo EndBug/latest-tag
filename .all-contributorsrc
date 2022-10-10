@@ -56,6 +56,15 @@
         "ideas",
         "code"
       ]
+    },
+    {
+      "login": "sebhoss",
+      "name": "Sebastian Hoß",
+      "avatar_url": "https://avatars.githubusercontent.com/u/44168?v=4",
+      "profile": "https://seb.people.metio.wtf/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
