@@ -18,6 +18,10 @@ inputs:
     description: 'Force-update a branch rather than a tag'
     required: false
     default: 'false'
+  git-directory:
+    description: 'Directory to use when executing git commands'
+    required: false
+    default: '${{ github.workspace }}'
 
 runs:
   using: 'node16'
