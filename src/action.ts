@@ -34,7 +34,7 @@ function forceBranch(git: GitArgs) {
   return exec(`${git.command} branch -f ${git.ref}`)
 }
 
-function setupUser(git: GitArgs) {
+async function setupUser(git: GitArgs) {
     core.info('Setting up git user...')
 
     const { GITHUB_ACTOR } = process.env
