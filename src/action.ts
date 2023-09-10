@@ -5,10 +5,7 @@ import * as child_process from 'child_process'
 class GitArgs {
   readonly command: string
 
-  constructor(
-    readonly ref: string,
-    readonly directory: string,
-  ) {
+  constructor(readonly ref: string, readonly directory: string) {
     this.command = `git -C ${this.directory}`
   }
 }
@@ -35,21 +32,22 @@ function forceBranch(git: GitArgs) {
 }
 
 async function setupUser(git: GitArgs) {
-    core.info('Setting up git user...')
+  core.info('Setting up git user...')
 
-    const { GITHUB_ACTOR } = process.env
+  const { GITHUB_ACTOR } = process.env
 
-    await exec(`${git.command} config user.name "${GITHUB_ACTOR}"`)
-    await exec(
-      `${git.command} config user.email "${GITHUB_ACTOR}@users.noreply.github.com"`
-    )
+  await exec(`${git.command} config user.name "${GITHUB_ACTOR}"`)
+  await exec(
+    `${git.command} config user.email "${GITHUB_ACTOR}@users.noreply.github.com"`
+  )
 }
 
 async function run() {
   try {
     const git = new GitArgs(
-      core.getInput('git-directory'),
-      core.getInput('ref') || core.getInput('tag-name') || 'latest')
+      core.getInput('ref') || core.getInput('tag-name') || 'latest',
+      core.getInput('git-directory')
+    )
 
     const branch = core.getBooleanInput('force-branch', { required: true })
     const message = core.getInput('description')
