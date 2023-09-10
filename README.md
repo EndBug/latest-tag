@@ -28,6 +28,10 @@ Add a step like this to your workflow:
     # Force-update a branch instead of using a tag.
     # Default: false
     force-branch: true
+
+    # Directory to use when executing git commands
+    # Default: '${{ github.workspace }}'
+    git-directory: 'path/to/repo/dir'
 ```
 
 ## License
