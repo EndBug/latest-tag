@@ -6,11 +6,17 @@ class GitArgs {
   readonly command: string
 
   constructor(readonly ref: string, readonly directory: string) {
+    core.debug(`GitArgs.ref: ${ref}`)
+    core.debug(`GitArgs.directory: ${directory}`)
+
     this.command = `git -C ${this.directory}`
+    core.debug(`GitArgs.command: ${this.command}`)
   }
 }
 
 async function exec(command: string) {
+  core.debug(`executing: ${command}`)
+
   const { stdout, stderr } = await util.promisify(child_process.exec)(command)
   if (stderr) console.error(stderr)
   return stdout
@@ -35,6 +41,7 @@ async function setupUser(git: GitArgs) {
   core.info('Setting up git user...')
 
   const { GITHUB_ACTOR } = process.env
+  core.debug(`GITHUB_ACTOR: ${GITHUB_ACTOR}`)
 
   await exec(`${git.command} config user.name "${GITHUB_ACTOR}"`)
   await exec(
@@ -56,6 +63,9 @@ async function run() {
       core.warning(
         "You can't set a message when updating a branch, the message will be ignored."
       )
+
+    core.debug(`branch: ${branch}`)
+    core.debug(`message: ${message}`)
 
     core.info(`Running git commands within ${git.directory}`)
     core.info(`Using '${git.ref}' as tag name.`)
