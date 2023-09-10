@@ -65,8 +65,18 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "qubitz",
+      "name": "Tyler Goffinet",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15070724?v=4",
+      "profile": "http://linkedin.com/in/tgoffinet/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
-  "skipCi": true
+  "skipCi": true,
+  "commitType": "docs"
 }
