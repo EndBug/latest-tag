@@ -73,7 +73,7 @@ async function run() {
     core.info(`Running git commands within ${git.directory}`)
     core.info(`Using '${git.ref}' as tag name.`)
 
-    setupUser(git)
+    await setupUser(git)
 
     if (branch) await forceBranch(git)
     else if (message) await annotatedTag(message, git)
