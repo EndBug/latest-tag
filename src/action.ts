@@ -5,7 +5,10 @@ import * as child_process from 'child_process'
 class GitArgs {
   readonly command: string
 
-  constructor(readonly ref: string, readonly directory: string) {
+  constructor(
+    readonly ref: string,
+    readonly directory: string
+  ) {
     core.debug(`GitArgs.ref: ${ref}`)
     core.debug(`GitArgs.directory: ${directory}`)
 
