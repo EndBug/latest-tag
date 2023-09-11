@@ -60,6 +60,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://seb.people.metio.wtf/"><img src="https://avatars.githubusercontent.com/u/44168?v=4?s=100" width="100px;" alt="Sebastian Hoß"/><br /><sub><b>Sebastian Hoß</b></sub></a><br /><a href="https://github.com/EndBug/latest-tag/commits?author=sebhoss" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://linkedin.com/in/tgoffinet/"><img src="https://avatars.githubusercontent.com/u/15070724?v=4?s=100" width="100px;" alt="Tyler Goffinet"/><br /><sub><b>Tyler Goffinet</b></sub></a><br /><a href="https://github.com/EndBug/latest-tag/commits?author=qubitz" title="Code">💻</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/alyssa-glean"><img src="https://avatars.githubusercontent.com/u/57534485?v=4?s=100" width="100px;" alt="Alyssa"/><br /><sub><b>Alyssa</b></sub></a><br /><a href="https://github.com/EndBug/latest-tag/issues?q=author%3Aalyssa-glean" title="Bug reports">🐛</a></td>
+    </tr>
   </tbody>
 </table>
 
