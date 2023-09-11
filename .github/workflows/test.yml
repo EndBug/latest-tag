@@ -6,7 +6,7 @@ jobs:
     name: Test build
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - run: npm i
       - run: npm run build
 
@@ -14,6 +14,6 @@ jobs:
     name: Check linting
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - run: npm i
       - run: npm run lint
