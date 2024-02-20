@@ -34,6 +34,9 @@ Add a step like this to your workflow:
     git-directory: 'path/to/repo/dir'
 ```
 
+> [!IMPORTANT]
+> Please make sure to set the workflow permissions so that the action runs with the `contents: write` permission. Visit the GitHub docs to learn more about token permissions: ["Automating token authentication"](https://docs.github.com/en/actions/security-guides/automatic-token-authentication)
+
 ## License
 
 This action is distributed under the MIT license, check the [license](LICENSE) for more info.
