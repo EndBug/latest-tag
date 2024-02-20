@@ -65,6 +65,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/alyssa-glean"><img src="https://avatars.githubusercontent.com/u/57534485?v=4?s=100" width="100px;" alt="Alyssa"/><br /><sub><b>Alyssa</b></sub></a><br /><a href="https://github.com/EndBug/latest-tag/issues?q=author%3Aalyssa-glean" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/pavel-faltynek"><img src="https://avatars.githubusercontent.com/u/86114047?v=4?s=100" width="100px;" alt="Pavel Faltýnek"/><br /><sub><b>Pavel Faltýnek</b></sub></a><br /><a href="#maintenance-pavel-faltynek" title="Maintenance">🚧</a></td>
     </tr>
   </tbody>
 </table>
