@@ -24,7 +24,7 @@ inputs:
     default: '${{ github.workspace }}'
 
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'lib/index.js'
 
 branding:
