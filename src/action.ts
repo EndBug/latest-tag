@@ -81,9 +81,15 @@ async function run() {
 
     if (branch) core.info('Force-pushing updated branch to repo...');
     else core.info('Pushing updated tag to repo...');
-    return await exec(`${git.command} push --force origin ${git.ref}`);
+    await exec(`${git.command} push --force origin ${git.ref}`);
   } catch (error) {
-    core.setFailed(error instanceof Error ? error.message : error);
+    core.setFailed(
+      error instanceof Error
+        ? error.message
+        : typeof error === 'string'
+          ? error
+          : JSON.stringify(error)
+    );
   }
 }
 
