@@ -92,6 +92,15 @@
       "contributions": [
         "maintenance"
       ]
+    },
+    {
+      "login": "Fresa",
+      "name": "Fredrik Arvidsson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1190300?v=4",
+      "profile": "https://blog.fkan.se",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
